@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>REFORM THE YOUTH CONCLAVE</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts for elegance -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #2c0b0e;
+      color: #f8e3c2;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    :root {
+      --wine: #711c2b;
+      --wine-light: #a33d4a;
+      --wine-dark: #4a0f1a;
+      --gold: #d4af37;
+      --gold-light: #f5e18b;
+      --gold-deep: #b68b2b;
+      --cream: #faf0e1;
+      --shadow: 0 15px 30px -10px rgba(0,0,0,0.5);
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem;
+      width: 100%;
+    }
+
+    /* Mobile-First Responsive Adjustments */
+    @media screen and (max-width: 768px) {
+      .container {
+        padding: 0.75rem;
+      }
+      
+      h1 { font-size: 1.8rem; }
+      h2 { font-size: 1.5rem; }
+      h3 { font-size: 1.2rem; }
+      
+      .section-title {
+        font-size: 1.8rem;
+        padding-left: 1rem;
+        margin-bottom: 1.5rem;
+        border-left-width: 5px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .container {
+        padding: 0.5rem;
+      }
+      
+      h1 { font-size: 1.5rem; }
+      h2 { font-size: 1.3rem; }
+      h3 { font-size: 1.1rem; }
+      
+      .section-title {
+        font-size: 1.5rem;
+        padding-left: 0.75rem;
+      }
+    }
+
+    /* Modal - Mobile Optimized */
+    .modal-overlay {
+      position: fixed;
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      padding: 1rem;
+    }
+
+    .modal-content {
+      background: linear-gradient(145deg, #7f2635, #57141f);
+      border: 2px solid var(--gold);
+      border-radius: 30px 10px 30px 10px;
+      padding: 1.5rem;
+      max-width: 90%;
+      width: 400px;
+      text-align: center;
+      box-shadow: 0 25px 40px rgba(212, 175, 55, 0.3);
+      position: relative;
+      margin: 1rem;
+    }
+
+    .modal-content i { 
+      font-size: 2.5rem; 
+      color: var(--gold); 
+      margin-bottom: 0.75rem; 
+    }
+
+    .modal-content h2 { 
+      font-size: 1.8rem; 
+      color: var(--gold-light); 
+    }
+
+    .modal-content p { 
+      font-size: 1.2rem; 
+      margin: 0.5rem 0 1rem; 
+    }
+
+    .modal-content .btn-gold {
+      background: var(--gold);
+      color: #2c0b0e;
+      font-weight: bold;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      cursor: pointer;
+      width: 100%;
+      max-width: 250px;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 10px; 
+      right: 15px;
+      font-size: 1.8rem;
+      color: var(--gold);
+      cursor: pointer;
+    }
+
+    /* Header - Mobile Optimized */
+    header {
+      background: linear-gradient(170deg, #611c26, #2e0b10);
+      border-bottom: 2px solid var(--gold);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+      padding: 0.8rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+      width: 100%;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .logo span { 
+      color: #f6dbaa; 
+      font-weight: 300; 
+      display: block;
+      font-size: 1.2rem;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+      width: 100%;
+    }
+
+    nav a { 
+      color: #ffeedd; 
+      text-decoration: none; 
+      font-weight: 500; 
+      font-size: 0.9rem;
+      padding: 0.3rem 0.5rem;
+      border-bottom: 2px solid transparent; 
+      transition: 0.2s;
+      white-space: nowrap;
+    }
+
+    @media screen and (max-width: 480px) {
+      .logo {
+        font-size: 1.4rem;
+      }
+      
+      .logo span {
+        font-size: 1rem;
+      }
+      
+      nav a {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.4rem;
+      }
+    }
+
+    /* Timer Bar - Mobile Optimized */
+    .timer-bar {
+      background: #3f121a;
+      padding: 0.6rem;
+      text-align: center;
+      border-bottom: 1px solid var(--gold);
+      font-size: 1rem;
+      font-weight: 600;
+      width: 100%;
+    }
+
+    #countdown { 
+      color: var(--gold-light); 
+      background: #2a0c10; 
+      padding: 0.2rem 0.8rem; 
+      border-radius: 40px; 
+      display: inline-block;
+      margin-top: 0.3rem;
+      font-size: 0.9rem;
+    }
+
+    @media screen and (max-width: 480px) {
+      .timer-bar {
+        font-size: 0.9rem;
+      }
+      
+      #countdown {
+        display: block;
+        width: fit-content;
+        margin: 0.3rem auto 0;
+      }
+    }
+
+    /* Cards Grid - Mobile Optimized */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    @media screen and (max-width: 768px) {
+      .card-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 0.8rem;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .card-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+      }
+    }
+
+    .glass-card {
+      background: rgba(113, 28, 43, 0.4);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(230, 185, 40, 0.4);
+      border-radius: 20px 8px 20px 8px;
+      padding: 1.2rem;
+      box-shadow: var(--shadow);
+      transition: 0.2s;
+      height: 100%;
+    }
+
+    /* Why Section - Mobile Optimized */
+    #why > div:first-of-type {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 1rem !important;
+    }
+
+    @media screen and (max-width: 768px) {
+      #why > div:first-of-type {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+      }
+    }
+
+    /* Perk Items Grid - Mobile Optimized */
+    .perk-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.8rem;
+    }
+
+    @media screen and (max-width: 480px) {
+      .perk-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.6rem;
+      }
+    }
+
+    .perk-item {
+      text-align: center;
+      padding: 0.8rem !important;
+    }
+
+    .perk-item i { 
+      color: var(--gold); 
+      font-size: 1.5rem; 
+      margin-bottom: 0.3rem; 
+    }
+
+    /* Committee Logos - Mobile Optimized */
+    .committee-logo {
+      width: 100px;
+      height: 100px;
+      background: var(--wine-dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center; 
+      justify-content: center;
+      margin: 0 auto 0.8rem;
+      border: 3px solid #4a0f1a;
+      overflow: hidden;
+    }
+
+    .committee-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media screen and (max-width: 480px) {
+      .committee-logo {
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    /* Founder Section - Mobile Optimized */
+    .founder-flex {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      background: linear-gradient(130deg, #5d1e2b, #2e0e13);
+      border-radius: 40px 8px;
+      padding: 1.2rem;
+      border: 1px solid var(--gold);
+      flex-direction: row;
+    }
+
+    @media screen and (max-width: 768px) {
+      .founder-flex {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+      }
+      
+      .founder-flex > div:last-child {
+        border-left: none !important;
+        padding-left: 0 !important;
+        border-top: 2px solid var(--gold);
+        padding-top: 1rem;
+      }
+    }
+
+    .profile-pic {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: #a33d4a;
+      border: 3px solid var(--gold);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .profile-pic img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+    }
+
+    /* Venue Section - Mobile Optimized */
+    .venue-photo {
+      background: linear-gradient(0deg, #00000055, #00000055), url('data:image/jpeg;base64,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') center/cover;
+      height: 200px;
+      border-radius: 30px 8px;
+      border: 2px solid var(--gold);
+      margin-bottom: 1.5rem;
+      width: 100%;
+    }
+
+    @media screen and (max-width: 768px) {
+      .venue-photo {
+        height: 180px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .venue-photo {
+        height: 150px;
+      }
+    }
+
+    .venue-details { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 1.5rem; 
+    }
+
+    @media screen and (max-width: 768px) {
+      .venue-details {
+        flex-direction: column;
+      }
+    }
+
+    .venue-map iframe { 
+      width: 100%; 
+      height: 300px;
+      border-radius: 20px; 
+      border: 2px solid var(--gold); 
+    }
+
+    @media screen and (max-width: 480px) {
+      .venue-map iframe {
+        height: 250px;
+      }
+    }
+
+    /* Registration Buttons - Mobile Optimized */
+    .reg-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .gold-btn {
+      background: linear-gradient(145deg, #d4af37, #a57c1e);
+      border: none;
+      color: #2c0b0e;
+      font-weight: bold;
+      padding: 0.7rem 1.5rem;
+      border-radius: 40px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: 0.2s;
+      text-decoration: none;
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    @media screen and (max-width: 480px) {
+      .gold-btn {
+        width: 100%;
+        white-space: normal;
+        padding: 0.8rem;
+        font-size: 0.9rem;
+      }
+      
+      .reg-buttons {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+    }
+
+    /* Contact Section - Mobile Optimized */
+    .contact-section {
+      background: #320e14;
+      border-radius: 40px 8px 40px 8px;
+      padding: 1.5rem;
+      border: 1px solid var(--gold);
+    }
+
+    .contact-section > div {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      justify-content: center;
+    }
+
+    @media screen and (max-width: 480px) {
+      .contact-section > div {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      
+      .social-icon {
+        margin-right: 0.5rem;
+      }
+    }
+
+    .social-icon { 
+      color: var(--gold); 
+      font-size: 1.5rem; 
+      margin-right: 0.8rem; 
+    }
+
+    /* Dropdown - Mobile Optimized */
+    .dropdown {
+      background: #551e28;
+      border-radius: 20px;
+      padding: 0.8rem 1rem;
+      margin: 0.8rem 0;
+      cursor: pointer;
+    }
+
+    .dropdown-content {
+      display: none;
+      padding: 1rem;
+      background: #3f121a;
+      border-radius: 15px;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    /* Lists - Mobile Optimized */
+    ul {
+      padding-left: 1.2rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      border-top: 1px solid var(--gold);
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+
+    /* Utility Classes */
+    .text-center {
+      text-align: center;
+    }
+
+    .w-100 {
+      width: 100%;
+    }
+
+    /* Fix for images */
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+
+<!-- POP-UP MODAL (early bird) -->
+<div id="popupModal" class="modal-overlay">
+  <div class="modal-content">
+    <span class="close-modal" id="closeModalBtn">&times;</span>
+    <i class="fas fa-gem"></i>
+    <h2>EARLY BIRD ENDS SOON</h2>
+    <p>Register before 03 March</p>
+    <button class="btn-gold" id="modalRegBtn">Register now</button>
+  </div>
+</div>
+
+<!-- header with navigation -->
+<header>
+  <div class="logo">REFORM THE<span> YOUTH CONCLAVE</span></div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#why">Why us</a>
+    <a href="#committees">Committees</a>
+    <a href="#venue">Venue</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- live countdown timer -->
+<div class="timer-bar">
+  <i class="fas fa-hourglass-half"></i> COUNTDOWN TO REFORM YOUTH CONCLAVE 2026 
+  <span id="countdown">00d 00h 00m 00s</span>
+</div>
+
+<!-- main container -->
+<main class="container">
+
+  <!-- why choose our mun + 9 delegate perks -->
+  <section id="why" style="margin-bottom: 3rem;">
+    <h2 class="section-title">Why REFORM YOUTH CONCLAVE?</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+      <div class="glass-card">
+        <h3 style="color: var(--gold);">✨ Unmatched excellence</h3>
+        <p>Top-tier academic team, crisis simulations, and ambassadorial guest lectures. Our team has 3+ years MUN/Conference's experience.</p>
+        <p><i class="fas fa-globe" style="color: gold;"></i> 60+ nations represented annually</p>
+
+        <h3 style="color: var(--gold);">✨ DELEGATE'S PERKS</h3>
+        <ul>
+          <li>Merit-Based Internship Opportunities participants will get the opportunity to apply for the internships of up to one month with "LOK UDAY FOUNDATION" and partner organizations, based purely on performance and merit during the conclave.</li>
+          <li>Assured Internship for Top Performers</li>
+          <li>Top-performing delegates across committees will be assured internship positions with NGO's, offering hands-on exposure to social impact initiatives, policy research, and framework</li>
+          <li>Exclusive Academic Benefits, Top performers will be awarded Exclusive fee concessions at prestigious institutions such as "PACE COMMERCE CLASSES", recognizing merit while providing academic support and financial relief to deserving participants.</li>
+          <li>Participation Certificate Government-affiliated certificate issued under a registered Organization's</li>
+          <li>High-quality committee experience with experienced Executive Board Member, Structured debate, moderated caucuses & real-time diplomacy exposure</li>
+          <li>Opportunity to connect with youth leaders & changemakers professional peer network building</li>
+          <li>Exclusive opportunities to enroll yourself in Skill enhancement courses</li>
+          <li>Awards, Certificate, Cash Prize & Special recognization for Top 3 winning delegates</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="color: var(--gold); margin-bottom: 1rem;">🏅 9 delegate perks</h3>
+        <div class="perk-grid">
+          <div class="glass-card perk-item"><i class="fas fa-hotel"></i> <br> Luxe hotel stay</div>
+          <div class="glass-card perk-item"><i class="fas fa-utensils"></i> <br> Gala Breakfast,Lunch & High-Tea</div>
+          <div class="glass-card perk-item"><i class="fas fa-camera"></i> <br> Photography Access</div>
+          <div class="glass-card perk-item"><i class="fas fa-person"></i> <br> Experienced Executive Board Member</div>
+          <div class="glass-card perk-item"><i class="fas fa-chalkboard-teacher"></i> <br> Mentor brief</div>
+          <div class="glass-card perk-item"><i class="fas fa-tools"></i> <br> Delegate kit</div>
+          <div class="glass-card perk-item"><i class="fas fa-wifi"></i> <br> Premium wifi</div>
+          <div class="glass-card perk-item"><i class="fas fa-cocktail"></i> <br> Networking night</div>
+          <div class="glass-card perk-item"><i class="fas fa-award"></i> <br> Award ceremony</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- committees (including special) -->
+  <section id="committees" style="margin-bottom: 3rem;">
+    <h2 class="section-title">Committees & Agendas</h2>
+    <div class="card-grid">
+      <!-- LOK SABHA -->
+      <div class="glass-card">
+        <div class="committee-logo"><img src="lok sabha.png" alt="LOK SABHA"></div>
+        <h3 style="color: gold;">LOK SABHA</h3>
+        <p><strong>Agenda:</strong> Deliberation on the Future of Reservation Policy in India: Balancing Social Justice, Meritocracy, and Economic Equity</p>
+        <p><span style="color:#f5d742;">Overview: </span>This committee will review India's reservation policies, assessing their impact on social justice and merit, and discuss possible reforms for the future.</p>
+      </div>
+      <!-- SOCIAL REFORM COUNCIL -->
+      <div class="glass-card">
+        <div class="committee-logo"><img src="social reform council.png" alt="SOCIAL REFORM COUNCIL"></div>
+        <h3 style="color: gold;">SOCIAL REFORM COUNCIL</h3>
+        <p><strong>Agenda:</strong> Questioning Orthodox Practices in India: balancing Tradition, Rationality, and Social Progress</p>
+        <p><span style="color:#f5d742;">Overview: </span>This council will assess orthodox practices in India, debating whether they preserve culture or hinder social progress, and suggest reforms for a more inclusive and progressive society.</p>
+      </div>
+      <!-- WORLD HEALTH ORGANIZATION -->
+      <div class="glass-card">
+        <div class="committee-logo"><img src="who.png" alt="WORLD HEALTH ORGANIZATION"></div>
+        <h3 style="color: gold;">WORLD HEALTH ORGANIZATION</h3>
+        <p><strong>Agenda:</strong> Mind Matters: Addressing the Mental Health Crisis Among Gen Z in the Digital Age.</p>
+        <p><span style="color:#f5d742;">Overview: </span>This council will examine Gen Z's mental health challenges, focusing on digital media, social pressures, and societal expectations, while discussing strategies to promote awareness, resilience, and better support systems.</p>
+      </div>
+      <!-- ALL INDIA STAKEHOLDER'S MEET -->
+      <div class="glass-card" style="border: 3px solid var(--gold);">
+        <div class="committee-logo"><img src="aism.png" alt="ALL INDIA STAKEHOLDER'S MEET"></div>
+        <h3 style="color: gold;">ALL INDIA STAKEHOLDER'S MEET</h3>
+        <p><strong>Agenda:</strong> Nepotism or Networking? Privilege, Access, and Fairness in India's Influencer and Entertainment Economy</p>
+        <p><span style="color:#f5d742;">Overview: </span>This session will examine how privilege and networks shape careers in India's entertainment and digital industries, questioning whether talent alone ensures success or if nepotism still dominates opportunities.</p>
+      </div>
+      <!-- PITCH TANK -->
+      <div class="glass-card">
+        <div class="committee-logo"><img src="pitch tank.png" alt="PITCH TANK"></div>
+        <h3 style="color: gold;">*PITCH TANK*</h3>
+        <p><strong>Agenda:</strong> Deliberation & Investment in innovative entrepreneurial ventures through competitive pitching and valuation.</p>
+        <p><span style="color:#f5d742;">Overview: </span>Pitch Tank is a dynamic online platform where young innovators pitch startups, social initiatives, or creative ideas to real investors and mentors. Participants face live feedback and tough questions while competing for funding, mentorship, and collaboration—turning bold ideas into real impact.</p>
+      </div>
+      <!-- INTERNATIONAL PRESS -->
+      <div class="glass-card">
+        <div class="committee-logo"><img src="international press.png" alt="INTERNATIONAL PRESS"></div>
+        <h3 style="color: gold;">INTERNATIONAL PRESS</h3>
+        <p><strong>Agenda:</strong> Capture | Collect | Report</p>
+        <p><span style="color:#f5d742;">Overview: </span></p>
+        <ul>
+          <li>JOURNALISM</li>
+          <li>PHOTOGRAPHY</li>
+          <li>VIDEOGRAPHY</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:1rem;"><i class="fas fa-star" style="color:gold;"></i> All committees have individual Agendas, Overviews and logos – check registration portal.</p>
+  </section>
+  
+  <!-- about session + founder's vision together -->
+  <section id="about" style="margin-bottom: 3rem;">
+    <h2 class="section-title">About & Founder's vision</h2>
+    <div class="founder-flex">
+      <div style="flex: 1;">
+        <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+          <div class="profile-pic"><img src="founder.jpg" alt="founder"></div>
+          <div>
+            <h3 style="color: var(--gold);">Rishita Singh</h3>
+            <p><em>Founder</em></p>
+          </div>
+        </div>
+        <p style="margin-top: 1rem;">Reform was born from a simple belief that questioning is not rebellion, and change does not begin with noise, but with clarity. It was because i wanted to challenge the way we accept things just because they've always been that way. Reform, to me, means looking at the systems around us and asking: "Does this really work? Does this serve everyone fairly? Can we make it better?"</p>
+        <p>I believe progress comes when we question, when we act, and when we take responsibility. It's about correcting what's broken, improving what's outdated, and building something that actually benefits society. Everything we do at reform every discussion, every program, every initiative is meant to turn ideas into impact. Even the resources we generate are meant to serve society, to fund projects, opportunities, and programs that help people, not just institutions.</p>
+        <p>To me, Reform isn't a one-time conference. It's mindset, a way of approaching life, society, and responsibility. And this is just the beginning.</p>
+      </div>
+      <div style="flex: 1; border-left: 2px solid var(--gold); padding-left: 1.5rem;">
+        <i class="fas fa-quote-right" style="color: var(--gold); font-size: 1.8rem;"></i>
+        <p><strong>QUOTE 2026</strong> – "To create a platform where young minds come together to question, deliberate, and transform society. We envision a conference that inspires critical thinking, challenges outdated norms, and empowers the next generation to lead with courage, creativity, and a commitment to social progress."</p>
+        <img src="logo.png" style="width:100%; border-radius: 20px; margin-top:1rem; border:2px solid var(--gold);" alt="session">
+      </div>
+    </div>
+  </section>
+
+  <!-- venue details -->
+  <section id="venue" style="margin-bottom: 3rem;">
+    <h2 class="section-title">Venue — Columbia Professional Institute of Engineering & Technology</h2>
+    <div class="venue-photo"></div>
+    <div class="venue-details">
+      <div style="flex:1">
+        <i class="fas fa-map-pin" style="color:gold; font-size: 1.5rem;"></i> 
+        <strong style="font-size: 1.2rem;">Location:</strong> 
+        <p>Near Vidha Sabha Road, Tekari-2, Bhurkoni, Chhattisgarh, 493111</p> 
+        <i class="fas fa-building" style="font-size: 1.2rem;"></i> 
+        <strong style="font-size: 1.2rem;">Facilities:</strong> 
+        <ul>
+          <li>10 Classrooms</li>
+          <li>WIFI Campus</li>
+          <li>Auditorium</li>
+          <li>Press Room</li>
+        </ul>
+      </div>
+      <div style="flex:1" class="venue-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3716.8817289625304!2d81.70419877434728!3d21.315689177863526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a28e86236b0644f%3A0xde997fa359b3b929!2sColumbia%20Institute%20of%20Engineering%20%26%20Technology!5e0!3m2!1sen!2sin!4v1771595330280!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- registration area + live portfolio matrix -->
+  <section style="margin-bottom: 3rem;">
+    <h2 class="section-title">Registration</h2>
+    <div class="glass-card reg-buttons" style="justify-content: center;">
+      <button class="gold-btn" id="regFormBtn"><i class="fas fa-file-signature"></i> Google Form (register)</button>
+      <button class="gold-btn" id="matrixBtn"><i class="fas fa-table"></i> Live Portfolio Matrix</button>
+    </div>
+    <p style="text-align:center; margin-top:1rem;"><i class="fas fa-clock"></i> Early bird closes 03 March – register now.</p>
+  </section>
+
+  <!-- detailed contact section -->
+  <section id="contact" class="contact-section">
+    <h2 class="section-title" style="border-left-color: var(--gold);">Contact us</h2>
+    <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+      <div><i class="fas fa-envelope social-icon"></i> the.reform.society.09@gmail.com</div>
+      <div><i class="fas fa-phone-alt social-icon"></i> +91 70671-01509</div>
+      <div><i class="fab fa-instagram social-icon"></i> @reform.youth.conclave</div>
+    </div>
+  </section>
+</main>
+
+<!-- footer small -->
+<footer style="text-align: center; padding: 1.5rem; border-top: 1px solid var(--gold); margin-top: 2rem;">
+  <p>© 2026 Reform the Youth Conclave. All rights reserved. Wine & gold diplomacy.</p>
+</footer>
+
+<script>
+  (function() {
+    // POPUP LOGIC
+    const modal = document.getElementById('popupModal');
+    const closeBtn = document.getElementById('closeModalBtn');
+    const modalReg = document.getElementById('modalRegBtn');
+
+    // Show popup after 0.5s
+    window.addEventListener('load', function() {
+      setTimeout(() => { 
+        if (modal) modal.style.display = 'flex'; 
+      }, 500);
+    });
+    
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function() { 
+        if (modal) modal.style.display = 'none'; 
+      });
+    }
+    
+    if (modalReg) {
+      modalReg.addEventListener('click', function() { 
+        window.open("https://docs.google.com/forms/d/e/1FAIpQLSfs2BRUddZEmvrg_Br01YwNNlNkE1DUzzWhmNWY6CLtN523FA/viewform?usp=header", "_blank");
+        if (modal) modal.style.display = 'none'; 
+      });
+    }
+    
+    window.addEventListener('click', (e) => { 
+      if (e.target === modal && modal) modal.style.display = 'none'; 
+    });
+
+    // Live countdown timer (target: 19 april 2026)
+    function updateTimer() {
+      const eventDate = new Date('April 19, 2026 08:00:00').getTime();
+      const now = new Date().getTime();
+      const diff = eventDate - now;
+      const countdownEl = document.getElementById('countdown');
+      if (!countdownEl) return;
+      
+      if (diff < 0) { 
+        countdownEl.innerText = 'Event started!'; 
+        return; 
+      }
+      const days = Math.floor(diff / (1000*60*60*24));
+      const hours = Math.floor((diff % (86400000)) / (3600000));
+      const minutes = Math.floor((diff % 3600000) / 60000);
+      const seconds = Math.floor((diff % 60000) / 1000);
+      countdownEl.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+    setInterval(updateTimer, 1000);
+    updateTimer();
+
+    // registration buttons
+    document.addEventListener('DOMContentLoaded', function() {
+      const regFormBtn = document.getElementById('regFormBtn');
+      const matrixBtn = document.getElementById('matrixBtn');
+      
+      if (regFormBtn) {
+        regFormBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.open("https://docs.google.com/forms/d/e/1FAIpQLSfs2BRUddZEmvrg_Br01YwNNlNkE1DUzzWhmNWY6CLtN523FA/viewform?usp=header", "_blank");
+        });
+      }
+      
+      if (matrixBtn) {
+        matrixBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.open("https://docs.google.com/spreadsheets/d/1bt_9gUtJyK7KlJPNUyGGWWGeyqBNnYpkZcGc22qENIU/edit?usp=sharing", "_blank");
+        });
+      }
+    });
+
+  })();
+</script>
+</body>
+</html>
